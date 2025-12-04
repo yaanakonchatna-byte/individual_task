@@ -61,45 +61,42 @@
     </header>
 
     <main>
-        <h1>Всі Новини та Аналітика</h1>
-
-        <div class="filter-bar">
-            <strong>Сортувати:</strong>
-            <select>
-                <option>За датою (новіші)</option>
-                <option>За популярністю</option>
-            </select>
-            <strong>Фільтр за категорією:</strong>
-            <select>
-                <option>Всі категорії</option>
-                <option>AI</option>
-                <option>SMM</option>
-                <option>Data Science</option>
-            </select>
-        </div>
+    <h1>🗞️ Новини та Аналітика</h1>
+    
+    <div class="filter-controls">
+    <label for="category-filter">Фільтрувати за категорією:</label>
+    <select id="category-filter" onchange="filterArticles()">
+        <option value="all">Всі категорії</option>
+        <option value="smm">SMM</option>            <option value="e-commerce">E-commerce</option><option value="data-science">Data Science</option><option value="tech">Технології</option>       </select>
+</div>
+    ```
         
         <section class="news-list">
 
-           <div class="article-card">
-                <h2>Тренд 2026: Аудіо-контент та його вплив на SMM-стратегії</h2>
-                <p class="meta">Категорія: SMM | 04.12.2025</p>
-                <p>Як платформи використовують аудіо-формати та як маркетологи можуть інтегрувати подкасти та голосові чати для залучення аудиторії.</p>
-                <p><a href="article-smm-audio.html">Читати повну статтю</a></p>
-            </div>
-            
-            <div class="article-card">
-            <h2>5 Принципів, як AI оптимізує логістику в E-commerce</h2>
-            <p class="meta">Категорія: E-commerce | 03.12.2025</p>
-            <p>Аналіз, як алгоритми машинного навчання прогнозують попит і мінімізують складські запаси для максимальної ефективності.</p>
-            <p><a href="article-ecommerce-ai.html">Читати повну статтю</a></p> 
-        </div>
+            <section class="news-list">
+    <div class="article-card" data-category="smm"> 
+        <h2>Тренд 2026: Аудіо-контент та його вплив на SMM-стратегії</h2>
+        <p class="meta">Категорія: SMM | 04.12.2025</p>
+        <p>Як платформи використовують аудіо-формати...</p>
+        <p><a href="article-smm-audio.html">Читати повну статтю</a></p>
+    </div>
 
-        <div class="article-card">
-            <h2>Чому Data Science став обов'язковим для B2B-маркетолога</h2>
-            <p class="meta">Категорія: Data Science | 01.12.2025</p>
-            <p>Огляд, як передбачувальне моделювання та аналіз великих даних змінюють стратегії продажів у сегменті B2B.</p>
-            <p><a href="article-b2b-data.html">Читати повну статтю</a></p> 
-        </div>
+    <div class="article-card" data-category="e-commerce">
+        <h2>5 Принципів, як AI оптимізує логістику в E-commerce</h2>
+        <p class="meta">Категорія: E-commerce | 03.12.2025</p>
+        <p>Аналіз, як алгоритми машинного навчання...</p>
+        <p><a href="article-ecommerce-ai.html">Читати повну статтю</a></p>
+    </div>
+
+    <div class="article-card" data-category="data-science">
+        <h2>Чому Data Science став обов'язковим для B2B-маркетолога</h2>
+        <p class="meta">Категорія: Data Science | 01.12.2025</p>
+        <p>Огляд, як передбачувальне моделювання...</p>
+        <p><a href="article-b2b-data.html">Читати повну статтю</a></p>
+    </div>
+</section>
+
+          
             
         </section>
         
@@ -110,5 +107,26 @@
         <p>&copy; 2025 TechStrat. <a href="я бачу.jpg" target="_blank">@neowmy</a></p>
     </footer>
 
+    <script>
+        function filterArticles() {
+            // Отримуємо вибрану категорію
+            const filterValue = document.getElementById('category-filter').value;
+            
+            // Отримуємо всі картки статей
+            const articles = document.querySelectorAll('.article-card');
+
+            // Перебираємо кожну картку
+            articles.forEach(article => {
+                const articleCategory = article.getAttribute('data-category');
+                
+                // Перевірка
+                if (filterValue === 'all' || articleCategory === filterValue) {
+                    article.style.display = 'block'; 
+                } else {
+                    article.style.display = 'none'; 
+                }
+            });
+        }
+    </script>
 </body>
 </html>
