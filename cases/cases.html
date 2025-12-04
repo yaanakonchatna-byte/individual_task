@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кейси та Практика | TechStrat</title>
+    
+    <style>
+        body { font-family: sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+        header { background-color: #333; color: white; padding: 10px 0; text-align: center; }
+        header h1 { margin: 0; font-size: 1.8em; }
+        header p { margin: 5px 0 10px; font-size: 1em; }
+        nav ul { list-style: none; padding: 0; display: flex; justify-content: center; margin: 0; }
+        nav ul li { margin: 0 15px; }
+        nav ul li a { color: white; text-decoration: none; font-weight: bold; } 
+        /* Стиль для поточної сторінки */
+        .current-page { color: #00050a; font-weight: bold; text-decoration: underline; }
+        main { padding: 20px; max-width: 1100px; margin: 20px auto; background-color: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 8px; }
+        h1 { color: #dc3545; border-bottom: 2px solid #ccc; padding-bottom: 10px; margin-top: 0; } /* Виділимо червоним для Кейсів */
+        
+        .case-card { 
+            border: 1px solid #dc3545; 
+            padding: 20px; 
+            margin-bottom: 20px; 
+            border-radius: 8px; 
+            background-color: #fff8f8; 
+            transition: transform 0.3s;
+        }
+        .case-card:hover { transform: translateY(-5px); box-shadow: 0 6px 12px rgba(220, 53, 69, 0.2); }
+        .case-card h2 { margin-top: 0; color: #dc3545; }
+        .case-card p.meta { font-size: 0.9em; color: #777; }
+        .case-card a { color: #dc3545; text-decoration: none; font-weight: bold; }
+        a, a:visited {
+            color:black;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        a:hover {
+            color:white;
+            background-color: black;
+            padding: 2px 5px;
+
+        
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>TechStrat</h1>
+        <p>Технологічні Стратегії: На перетині Маркетингу та IT</p>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Головна</a></li> 
+                <li><a href="../news/news.html">Новини та Аналітика</a></li>
+                <li><span class="current-page">Кейси та Практика</span></li>
+                <li><a href="../martech/martech.html">MarTech Огляд</a></li>
+                <li><a href="../login.html">Увійти / Реєстрація</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>🏆 Кейси та Практика</h1>
+        <p>Ознайомтеся з реальними прикладами інтеграції IT-рішень, які допомогли нашим клієнтам масштабувати бізнес та досягти цілей.</p>
+        
+        <section class="cases-list">
+
+        <div class="case-card">
+                <h2>Кейс: Збільшення LTV на 40% через впровадження AI-CRM</h2>
+                <p><a href="case-fintech-crm.html">Читати повний кейс →</a></p>
+            </div>
+
+            <div class="case-card">
+                <h2>Кейс: Зниження CPL на 25% завдяки предиктивному таргетингу</h2>
+                <p><a href="case-ecommerce-ads.html">Читати повний кейс →</a></p>
+            </div>
+            
+        </section>
+        
+        <p><a href="../index.html">← Повернутися на Головну</a></p>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 TechStrat.<a href="вітаю.jpg"  target="_blank">@neowmy</a></p>
+    </footer>
+
+</body>
+</html>
