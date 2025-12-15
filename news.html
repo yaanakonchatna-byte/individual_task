@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Новини та Аналітика | TechStrat</title>
+    
+    <style>
+        /* ========================================================= */
+        /* БАЗОВІ СТИЛІ */
+        /* ========================================================= */
+        body { font-family: sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+        header { background-color: #333; color: white; padding: 10px 0; text-align: center; }
+        nav ul { list-style: none; padding: 0; display: flex; justify-content: center; margin: 0; }
+        nav ul li { margin: 0 15px; }
+        nav ul li a { color: white; text-decoration: none; font-weight: bold; } 
+
+        main { 
+            padding: 20px; 
+            max-width: 900px; 
+            margin: 20px auto; 
+            background-color: white; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+            border-radius: 8px; 
+        }
+
+        /* ========================================================= */
+        /* СТИЛІ СТОРІНКИ ТА ФІЛЬТРАЦІЇ */
+        /* ========================================================= */
+        h1 { 
+            color: #007bff; 
+            border-bottom: 2px solid #ccc; 
+            padding-bottom: 10px; 
+            margin-top: 0; 
+            text-align: center; /* ЦЕНТРУВАННЯ ЗАГОЛОВКА */
+        } 
+        
+        /* Стилі для контейнера фільтра */
+        .filter-controls {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 4px;
+        }
+
+        /* ========================================================= */
+        /* СТИЛІ КАРТОК ЗІ ЗОБРАЖЕННЯМИ (FLEXBOX) */
+        /* ========================================================= */
+        .news-list {
+            padding: 20px 0;
+        }
+
+        .article-card { 
+            border: 1px solid #ddd; 
+            padding: 15px; 
+            margin-bottom: 20px; 
+            border-radius: 6px; 
+            background-color: #ffffff;
+            display: flex; /* Активація Flexbox для горизонтального розміщення */
+            gap: 20px; 
+            align-items: center; 
+        }
+        
+        .article-card img {
+            width: 150px; /* Фіксована ширина зображення */
+            height: 100px; /* Фіксована висота */
+            object-fit: cover; 
+            border-radius: 4px;
+        }
+
+        .article-content {
+            flex-grow: 1; /* Дозволяє контенту зайняти решту місця */
+            text-align: left; 
+        }
+        
+        .article-card h2 {
+            color: #0056b3;
+            margin-top: 0;
+        }
+        .article-card a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a, a:visited {
+            color:black;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        a:hover {
+            color:white;
+            background-color: black;
+            padding: 2px 5px;
+
+        
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>TechStrat</h1>
+        <p>Технологічні Стратегії: На перетині Маркетингу та IT</p>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Головна</a></li> 
+                <li><a href="news.html">Новини та Аналітика</a></li>
+                <li><a href="../cases/cases.html">Кейси та Практика</a></li>
+                <li><a href="../martech/martech.html">MarTech Огляд</a></li>
+                <li><a href="../login.html">Увійти / Реєстрація</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        
+        <h1>🗞️ Новини та Аналітика</h1>
+        
+        <div class="filter-controls">
+            <label for="category-filter">Фільтрувати за категорією:</label>
+            <select id="category-filter" onchange="filterArticles()">
+                <option value="all">Всі категорії</option>
+                <option value="smm">SMM</option>
+                <option value="e-commerce">E-commerce</option>
+                <option value="data-science">Data Science</option>
+                <option value="tech">Технології (AI)</option> 
+            </select>
+        </div>
+
+        <p>Ознайомтеся з найактуальнішими матеріалами, які впливають на стратегії цифрового маркетингу.</p>
+
+        <section class="news-list">
+            
+            <div class="article-card" data-category="smm"> 
+                <img src="smm.jpg" alt="Аудіо-контент SMM">
+                <div class="article-content">
+                    <h2>Тренд 2026: Аудіо-контент та його вплив на SMM-стратегії</h2>
+                    <p class="meta">Категорія: SMM | 04.12.2025</p>
+                    <p>Як платформи використовують аудіо-формати...</p>
+                    <p><a href="article-smm-audio.html">Читати повну статтю</a></p>
+                </div>
+            </div>
+
+            <div class="article-card" data-category="e-commerce">
+                <img src="e-commerce.jpg" alt="AI в E-commerce логістиці">
+                <div class="article-content">
+                    <h2>5 Принципів, як AI оптимізує логістику в E-commerce</h2>
+                    <p class="meta">Категорія: E-commerce | 03.12.2025</p>
+                    <p>Аналіз, як алгоритми машинного навчання...</p>
+                    <p><a href="article-ecommerce-ai.html">Читати повну статтю</a></p>
+                </div>
+            </div>
+
+            <div class="article-card" data-category="data-science">
+                <img src="data_science.jpg" alt="Data Science у B2B">
+                <div class="article-content">
+                    <h2>Чому Data Science став обов'язковим для B2B-маркетолога</h2>
+                    <p class="meta">Категорія: Data Science | 01.12.2025</p>
+                    <p>Огляд, як передбачувальне моделювання...</p>
+                    <p><a href="article-b2b-data.html">Читати повну статтю</a></p>
+                </div>
+            </div>
+
+            <div class="article-card" data-category="tech">
+                <img src="seo.jpg" alt="GPT-5 та SEO">
+                <div class="article-content">
+                    <h2>Вплив GPT-5 на SEO-стратегії 2025</h2>
+                    <p class="meta">Категорія: Технології | 10.12.2025</p>
+                    <p>Детальний огляд того, як нові великі мовні моделі...</p>
+                    <p><a href="article-gpt5-seo.html">Читати повну статтю</a></p>
+                </div>
+            </div>
+
+        </section>
+
+        <p><a href="../index.html">← Повернутися на Головну</a></p>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 TechStrat. <a href="я бачу.jpg" target="_blank">@neowmy</a></p>
+    </footer>
+
+    <script>
+        function filterArticles() {
+            // Отримуємо вибрану категорію
+            const filterValue = document.getElementById('category-filter').value;
+            
+            // Отримуємо всі картки статей
+            const articles = document.querySelectorAll('.article-card');
+
+            // Перебираємо кожну картку
+            articles.forEach(article => {
+                const articleCategory = article.getAttribute('data-category');
+                
+                // Перевірка: якщо вибрано "all" АБО категорія картки збігається з вибраною
+                if (filterValue === 'all' || articleCategory === filterValue) {
+                    article.style.display = 'flex'; // Показати картку (використовуємо flex для коректного відображення)
+                } else {
+                    article.style.display = 'none';  // Приховати картку
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

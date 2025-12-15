@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarTech Огляд | TechStrat</title>
+    
+    <style>
+        /* ========================================================= */
+        /* БАЗОВІ СТИЛІ */
+        /* ========================================================= */
+        body { font-family: sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+        header { background-color: #333; color: white; padding: 10px 0; text-align: center; } 
+        nav ul { list-style: none; padding: 0; display: flex; justify-content: center; margin: 0; }
+        nav ul li { margin: 0 15px; }
+        nav ul li a { color: white; text-decoration: none; font-weight: bold; } 
+
+        main { 
+            padding: 20px; 
+            max-width: 900px; 
+            margin: 20px auto; 
+            background-color: white; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+            border-radius: 8px; 
+        }
+
+        /* ========================================================= */
+        /* СТИЛІ СТОРІНКИ ТА ФІЛЬТРАЦІЇ */
+        /* ========================================================= */
+        h1 { 
+            color: #28a745; /* ✅ ЗЕЛЕНИЙ КОЛІР */
+            border-bottom: 2px solid #ccc; 
+            padding-bottom: 10px; 
+            margin-top: 0; 
+            text-align: center; 
+        } 
+        
+        .filter-controls {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #eafaea; /* Світло-зелений фон */
+            border: 1px solid #c3e6cb;
+            border-radius: 4px;
+        }
+
+        /* ========================================================= */
+        /* СТИЛІ КАРТОК З ЗОБРАЖЕННЯМИ (FLEXBOX) */
+        /* ========================================================= */
+        .review-list {
+            padding: 20px 0;
+        }
+
+        .review-card { 
+            border: 1px solid #28a745; /* ✅ ЗЕЛЕНА РАМКА */
+            padding: 15px; 
+            margin-bottom: 20px; 
+            border-radius: 6px; 
+            background-color: #ffffff;
+            display: flex;         
+            gap: 20px; 
+            align-items: center;   
+        }
+        
+        .review-card img {
+            width: 150px; 
+            height: 100px; 
+            object-fit: cover; 
+            border-radius: 4px;
+        }
+
+        .review-content {
+            flex-grow: 1; 
+            text-align: left; 
+        }
+        
+        .review-card h2 {
+            color: #28a745; /* ✅ ЗЕЛЕНИЙ КОЛІР */
+            margin-top: 0;
+        }
+        .review-card p.meta {
+             color: #777;
+             font-size: 0.9em;
+        }
+        .review-card a {
+            color: #28a745; /* ✅ ЗЕЛЕНИЙ КОЛІР */
+            text-decoration: none;
+            font-weight: bold;
+        }
+        /* Стиль для заголовка секції */
+        h3 {
+            color: #28a745; /* ✅ ЗЕЛЕНИЙ КОЛІР */
+            border-bottom: 1px solid #28a745; /* ✅ ЗЕЛЕНА ЛІНІЯ */
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+         a, a:visited {
+            color:black;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+
+        a:hover {
+            color:white;
+            background-color: black;
+            padding: 2px 5px;
+
+        
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>TechStrat</h1>
+        <p>Технологічні Стратегії: На перетині Маркетингу та IT</p>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Головна</a></li> 
+                <li><a href="../news/news.html">Новини та Аналітика</a></li>
+                <li><a href="../cases/cases.html">Кейси та Практика</a></li>
+                <li><a href="martech.html">MarTech Огляд</a></li>
+                <li><a href="../login.html">Увійти / Реєстрація</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        
+        <h1>⭐ MarTech Огляд: Каталог Інструментів</h1>
+        
+        <p>Огляди, порівняння та практичне використання найкращих інструментів MarTech для автоматизації та аналітики.</p>
+
+        <div class="filter-controls">
+            <label for="review-filter">Фільтрувати за типом інструменту:</label>
+            <select id="review-filter" onchange="filterReviews()">
+                <option value="all">Всі інструменти</option>
+                <option value="crm">CRM / Продажі</option>
+                <option value="analytics">Аналітика / Data</option>
+                <option value="automation">Автоматизація</option>
+            </select>
+        </div>
+
+        <section class="review-list">
+            
+            <h3>Інструменти на основі Штучного Інтелекту (AI)</h3>
+
+            <div class="review-card" data-category="analytics">
+                <img src="lead.jpg" alt="Predictive Lead Scorer" class="tool-image"> 
+                
+                <div class="review-content">
+                    <h2>Predictive Lead Scorer</h2>
+                    <p>Використовує машинне навчання для оцінки якості вхідних лідів...</p>
+                    <p class="meta">Теги: #AI #Sales #Automation | Ціна: від $50/міс</p>
+                    <p><a href="tool-leadscorer.html">Детальний огляд →</a></p>
+                </div>
+            </div>
+
+            <div class="review-card" data-category="automation">
+                <img src="cgs.jpg" alt="Content Generation Studio" class="tool-image"> 
+                
+                <div class="review-content">
+                    <h2>Content Generation Studio (CGS)</h2>
+                    <p>Платформа для автоматичної генерації SEO-оптимізованого контенту...</p>
+                    <p class="meta">Теги: #AI #SEO #Content | Ціна: від $99/міс</p>
+                    <p><a href="tool-cgs.html">Детальний огляд →</a></p>
+                </div>
+            </div>
+            
+            <div class="review-card" data-category="analytics">
+                <img src="rank.jpg" alt="Rank Analyzer" class="tool-image"> 
+                
+                <div class="review-content">
+                    <h2>Rank Analyzer</h2>
+                    <p>Інструмент для моніторингу та аналізу позицій у пошуковій видачі...</p>
+                    <p class="meta">Теги: #SEO #Analytics | Ціна: від $29/міс</p>
+                    <p><a href="tool-rank-analyzer.html">Детальний огляд →</a></p>
+                </div>
+            </div>
+            
+        </section>
+
+        <p><a href="../index.html">← Повернутися на Головну</a></p>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 TechStrat. <a href="бараболя.jpg" target="_blank">@neowmy</a>
+        </p>
+    </footer>
+
+    <script>
+        function filterReviews() {
+            const filterValue = document.getElementById('review-filter').value;
+            const reviewCards = document.querySelectorAll('.review-card');
+
+            reviewCards.forEach(card => {
+                const reviewCategory = card.getAttribute('data-category');
+                
+                if (filterValue === 'all' || reviewCategory === filterValue) {
+                    card.style.display = 'flex'; 
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
