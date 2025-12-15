@@ -6,30 +6,93 @@
     <title>Кейси та Практика | TechStrat</title>
     
     <style>
-        body { font-family: sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+        /* ========================================================= */
+        /* БАЗОВІ СТИЛІ */
+        /* ========================================================= */
+        body { font-family: sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
         header { background-color: #333; color: white; padding: 10px 0; text-align: center; }
-        header h1 { margin: 0; font-size: 1.8em; }
-        header p { margin: 5px 0 10px; font-size: 1em; }
         nav ul { list-style: none; padding: 0; display: flex; justify-content: center; margin: 0; }
         nav ul li { margin: 0 15px; }
         nav ul li a { color: white; text-decoration: none; font-weight: bold; } 
-        /* Стиль для поточної сторінки */
-        .current-page { color: #00050a; font-weight: bold; text-decoration: underline; }
-        main { padding: 20px; max-width: 1100px; margin: 20px auto; background-color: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 8px; }
-        h1 { color: #dc3545; border-bottom: 2px solid #ccc; padding-bottom: 10px; margin-top: 0; } /* Виділимо червоним для Кейсів */
+        nav ul li a:hover { color: white; background-color: black; padding: 2px 5px; } 
+
+        main { 
+            padding: 20px; 
+            max-width: 900px; 
+            margin: 20px auto; 
+            background-color: white; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+            border-radius: 8px; 
+        }
+
+        /* ========================================================= */
+        /* СТИЛІ СТОРІНКИ ТА ФІЛЬТРАЦІЇ */
+        /* ========================================================= */
+        h1 { 
+            color: #dc3545; 
+            border-bottom: 2px solid #ccc; 
+            padding-bottom: 10px; 
+            margin-top: 0; 
+            text-align: center; 
+        } 
         
+        .filter-controls {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #fff0f0; 
+            border: 1px solid #f5c6cb;
+            border-radius: 4px;
+        }
+
+        /* ========================================================= */
+        /* СТИЛІ КАРТОК (FLEXBOX) З ЦЕНТРУВАННЯМ */
+        /* ========================================================= */
+        .cases-list {
+            padding: 20px 0;
+        }
+
         .case-card { 
             border: 1px solid #dc3545; 
-            padding: 20px; 
+            padding: 15px; 
             margin-bottom: 20px; 
-            border-radius: 8px; 
-            background-color: #fff8f8; 
-            transition: transform 0.3s;
+            border-radius: 6px; 
+            background-color: #ffffff;
+            display: flex;         /* Вмикаємо Flexbox */
+            gap: 20px; 
+            align-items: center;   /* ✅ ЦЕНТРУВАННЯ ЗОБРАЖЕННЯ ТА ТЕКСТУ ПО ВЕРТИКАЛІ */
         }
-        .case-card:hover { transform: translateY(-5px); box-shadow: 0 6px 12px rgba(220, 53, 69, 0.2); }
-        .case-card h2 { margin-top: 0; color: #dc3545; }
-        .case-card p.meta { font-size: 0.9em; color: #777; }
-        .case-card a { color: #dc3545; text-decoration: none; font-weight: bold; }
+        
+        .case-card img {
+            width: 150px; 
+            height: 100px; 
+            object-fit: cover; 
+            border-radius: 4px;
+        }
+
+        .case-content {
+            flex-grow: 1; 
+            text-align: left; 
+        }
+        
+        .case-card h2 {
+            color: #dc3545;
+            margin-top: 0;
+        }
+        .case-card p.meta {
+             color: #777;
+             font-size: 0.9em;
+        }
+        .case-card a {
+            color: #dc3545;
+            text-decoration: none;
+        }
+        /* Стиль для посилань у картках */
+        .case-card a, .case-card a:visited {
+            color: #dc3545;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
         a, a:visited {
             color:black;
             text-decoration: none;
@@ -43,7 +106,6 @@
 
         
         }
-
     </style>
 </head>
 <body>
@@ -55,7 +117,7 @@
             <ul>
                 <li><a href="../index.html">Головна</a></li> 
                 <li><a href="../news/news.html">Новини та Аналітика</a></li>
-                <li><span class="current-page">Кейси та Практика</span></li>
+                <li><a href="cases.html">Кейси та Практика</a></li>
                 <li><a href="../martech/martech.html">MarTech Огляд</a></li>
                 <li><a href="../login.html">Увійти / Реєстрація</a></li>
             </ul>
@@ -63,29 +125,81 @@
     </header>
 
     <main>
-        <h1>🏆 Кейси та Практика</h1>
-        <p>Ознайомтеся з реальними прикладами інтеграції IT-рішень, які допомогли нашим клієнтам масштабувати бізнес та досягти цілей.</p>
         
-        <section class="cases-list">
+        <h1>🏆 Кейси та Практика</h1>
+        
+        <p>Ознайомтеся з реальними прикладами інтеграції IT-рішень, які допомогли нашим клієнтам масштабувати бізнес та досягти цілей.</p>
 
-        <div class="case-card">
-                <h2>Кейс: Збільшення LTV на 40% через впровадження AI-CRM</h2>
-                <p><a href="case-fintech-crm.html">Читати повний кейс →</a></p>
+        <div class="filter-controls">
+            <label for="case-filter">Фільтрувати за галуззю:</label>
+            <select id="case-filter" onchange="filterCases()">
+                <option value="all">Всі Галузі</option>
+                <option value="fintech">Фінтех</option>
+                <option value="e-commerce">E-commerce</option>
+                <option value="b2b">B2B Сервіси</option>
+            </select>
+        </div>
+
+        <section class="cases-list">
+            
+            <div class="case-card" data-category="fintech">
+                <img src="crm.jpg" alt="AI CRM у Фінтеху">
+                
+                <div class="case-content">
+                    <h2>Кейс: Збільшення LTV на 40% через впровадження AI-CRM</h2>
+                    <p class="meta">Галузь: Фінтех | Інструменти: HubSpot + ML-модуль | Дата: Квітень 2025</p>
+                    <p>Аналіз, як розумне управління відносинами з клієнтами вплинуло на їхню цінність.</p>
+                    <p><a href="case-fintech-crm.html">Читати повний кейс →</a></p>
+                    </div>
             </div>
 
-            <div class="case-card">
-                <h2>Кейс: Зниження CPL на 25% завдяки предиктивному таргетингу</h2>
-                <p><a href="case-ecommerce-ads.html">Читати повний кейс →</a></p>
+            <div class="case-card" data-category="e-commerce">
+                <img src="target.jpg" alt="Предиктивний таргетинг">
+                
+                <div class="case-content">
+                    <h2>Кейс: Зниження CPL на 25% завдяки предиктивному таргетингу</h2>
+                    <p class="meta">Галузь: E-commerce | Інструменти: Google Ads + Data Studio | Дата: Червень 2025</p>
+                    <p>Як Data Science допоміг точно передбачити, які користувачі конвертуються.</p>
+                    <p><a href="case-ecommerce-ads.html">Читати повний кейс →</a></p>
+                    </div>
+            </div>
+
+            <div class="case-card" data-category="b2b">
+                <img src="b2b.jpg" alt="Чатбот для B2B">
+                
+                <div class="case-content">
+                    <h2>Кейс: Впровадження Chatbot-а для техпідтримки та скорочення витрат</h2>
+                    <p class="meta">Галузь: B2B Сервіси | Інструменти: Azure AI | Дата: Липень 2025</p>
+                    <p>Огляд, як автоматизація першої лінії підтримки вплинула на ефективність.</p>
+                    <p><a href="case-b2b-chatbot.html">Читати повний кейс →</a></p>
+                    </div>
             </div>
             
         </section>
-        
+
         <p><a href="../index.html">← Повернутися на Головну</a></p>
     </main>
 
     <footer>
         <p>&copy; 2025 TechStrat.<a href="вітаю.jpg"  target="_blank">@neowmy</a></p>
     </footer>
+    
+    <script>
+        function filterCases() {
+            const filterValue = document.getElementById('case-filter').value;
+            const caseCards = document.querySelectorAll('.case-card');
 
+            caseCards.forEach(card => {
+                const caseCategory = card.getAttribute('data-category');
+                
+                // Використовуємо 'flex' для відображення, оскільки картка є flex-контейнером
+                if (filterValue === 'all' || caseCategory === filterValue) {
+                    card.style.display = 'flex'; 
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
