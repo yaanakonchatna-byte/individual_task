@@ -45,6 +45,42 @@
             padding: 2px 5px;
             
         }
+
+        /* Стилі для відео секції */
+.video-container {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.video-container h2 {
+    color: #28a745; /* Зелений колір, як у MarTech */
+    margin-bottom: 20px;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Співвідношення сторін 16:9 */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-description {
+    margin-top: 15px;
+    font-style: italic;
+    color: #666;
+}
     </style>
 </head>
 <body>
@@ -80,6 +116,20 @@
 
     <h3>Три Кити Технологічного Маркетингу (MarTech)</h3>
     <p>
+
+        <section class="video-container">
+    <h2>Про спеціальність: Підприємництво та IT</h2>
+    <div class="video-wrapper">
+        <iframe 
+            src="https://www.youtube.com/embed/pINphhWTGU8" 
+            title="Спеціальність Підприємництво та торгівля" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+        </iframe>
+    </div>
+    <p class="video-description">Дізнайтеся більше про поєднання бізнесу, маркетингу та комп'ютерних технологій.</p>
+</section>
         Щоб побудувати ефективну стратегію, маркетологу необхідний арсенал, що охоплює весь шлях клієнта, від першого контакту до повторної покупки.
     </p>
     
